@@ -1,0 +1,12 @@
+# Compiled Java class files
+*.class
+
+# IntelliJ IDEA workspace and config files
+.idea/
+*.iml
+
+# OS and build metadata (optional, but recommended)
+.DS_Store
+Thumbs.db
+out/
+bin/
