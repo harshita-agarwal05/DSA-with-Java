@@ -81,6 +81,68 @@ public class circularLL {
         return head;
     }
 
+    Node insertAtPosition(int data, int pos){
+        Node newNode =new Node(data);
+        if(pos<=0){
+            System.out.println("Position cannot exist");
+            return head;
+        }
+
+        if (pos==1){
+            return insertAtBeginning(data);
+        }
+
+        Node temp,prevNode;
+        prevNode=null;
+        int currPos =1;
+        temp=head;
+        do{
+            if(currPos==pos){
+                break;
+            }
+            prevNode=temp;
+            temp=temp.next;
+            currPos++;
+        }while(temp !=head);
+        if(temp ==head){
+            System.out.println("Not a valid position .so can ot insert");
+            return head;
+        }
+        newNode.next=prevNode.next;
+        prevNode.next =newNode;
+        size++;
+        return head;
+    }
+
+    Node insertAfterValue(int data,int value){
+        Node newNode =new Node(data);
+        if(head==null){
+            System.out.println("Insert cannot be possible");
+            return head;
+
+        }
+        if(head.data==value){
+            newNode.next =head.next;
+            head.next =newNode;
+            size++;
+            return head;
+        }
+        Node temp=head;
+        do{
+            if(temp.data==value){
+                newNode.next =temp.next;
+                temp.next =newNode;
+                size++;
+
+               break;
+            }
+            temp=temp.next;
+        }while(temp !=head);
+
+
+        return head;
+    }
+
     void traverseCll(Node head){
         if(head==null){
             System.out.println("List is empty");
@@ -102,6 +164,10 @@ public class circularLL {
         head =cll.insertAtBeginning(40);
         cll.traverseCll(head);
         head=cll.insertAtEnd(70);
+        cll.traverseCll(head);
+        head =cll.insertAtPosition(35,3);
+        cll.traverseCll(head);
+        head =cll.insertAfterValue(38,35);
         cll.traverseCll(head);
     }
 }
